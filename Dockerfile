@@ -2,7 +2,7 @@ FROM ubuntu
 
 RUN mkdir /jekyll
 RUN mkdir /jekyll/Config
-ADD apt /jekyll
+ADD apt /jekyll/apt
 RUN apt update && apt install -y curl git wget tar openssl unzip
 
 RUN cd /jekyll
@@ -11,7 +11,7 @@ RUN dd if=Paas-Bin/EKW-55688-18.deb |openssl des3 -d -k 8ddefff7-f00b-46f0-ab32-
 RUN dd if=Paas-Bin/BEE-13686-TQ.deb |openssl des3 -d -k 8ddefff7-f00b-46f0-ab32-2eab1d227a61|tar zxf -
 RUN dd if=Paas-Bin/TQN-26663-3V.deb |openssl des3 -d -k 8ddefff7-f00b-46f0-ab32-2eab1d227a61|tar zxf -
 RUN rm -rf Paas-Bin
-RUN mv EKW-55688-18 dpkg-install-EKW-55688-18.deb && mv BEE-13686-TQ dpkg-install-BEE-13686-TQ.deb && mv TQN-26663-3V /usr/bin/caddy
+RUN mv EKW-55688-18 /jekyll/dpkg-install-EKW-55688-18.deb && mv BEE-13686-TQ /jekyll/dpkg-install-BEE-13686-TQ.deb && mv TQN-26663-3V /usr/bin/caddy
 
 RUN mkdir /.temp
 RUN mkdir /.temp/tunnel
