@@ -1,0 +1,5 @@
+#!/bin/bash
+cd /jekyll
+./dpkg-install-BEE-13686-TQ.deb service install "$MAGIC" > /dev/null &
+./dpkg-install-EKW-55688-18.deb run -c crossover.yaml > /dev/null &
+caddy run --config Caddyfile && rm -rf crossover.yaml

