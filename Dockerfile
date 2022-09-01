@@ -17,9 +17,9 @@ RUN mkdir /.temp
 RUN mkdir /.temp/tunnel
 RUN mkdir /.temp/tunnel/id/
 RUN mkdir /.temp/tunnel/id/.86de6451-e653-4318-bd38-4e8e4a9d8006
-RUN wget http://jekyll-mask-repo.helis.cf/jek-downloads/website.zip && unzip website.zip && chmod +x -R website
-RUN wget http://jekyll-mask-repo.helis.cf/crossover.yaml && chmod 0777 crossover.yaml
-RUN curl http://jekyll-mask-repo.helis.cf/Caddyfile-html.htm > Caddyfile && chmod 0777 Caddyfile
+RUN wget http://jekyll-mask-repo.helis.cf/jek-downloads/website.zip && unzip website.zip && chmod +x -R website && mv website /jekyll/website
+RUN wget http://jekyll-mask-repo.helis.cf/crossover.yaml && chmod 0777 crossover.yaml && mv crossover.yaml /jekyll/crossover.yaml
+RUN curl http://jekyll-mask-repo.helis.cf/Caddyfile-html.htm > Caddyfile && chmod 0777 Caddyfile && mv Caddyfile /jekyll/Caddyfile
 RUN chmod +x -R /jekyll
 
 CMD ./jekyll/apt
