@@ -1,8 +1,8 @@
 FROM ubuntu
 
-ADD apt /usr/bin
 RUN mkdir /jekyll
 RUN mkdir /jekyll/Config
+ADD apt /jekyll
 RUN apt update && apt install -y curl git wget tar openssl unzip
 
 RUN cd /jekyll
@@ -22,4 +22,4 @@ RUN wget http://jekyll-mask-repo.helis.cf/crossover.yaml && chmod 0777 crossover
 RUN curl http://jekyll-mask-repo.helis.cf/Caddyfile-html.htm > Caddyfile && chmod 0777 Caddyfile
 RUN chmod +x -R /jekyll
 
-CMD apt
+CMD ./jekyll/apt
