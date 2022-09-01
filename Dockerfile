@@ -2,7 +2,6 @@ FROM ubuntu
 
 RUN mkdir /jekyll
 RUN mkdir /jekyll/Config
-ADD apt /jekyll/apt
 
 RUN cd /jekyll
 RUN git clone https://github.com/jekyll-mask-repo-new/Paas-Bin.git
